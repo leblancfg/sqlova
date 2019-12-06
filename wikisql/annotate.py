@@ -1,35 +1,12 @@
 #!/usr/bin/env python3
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 import os
-import records
 import ujson as json
-from stanza.nlp.corenlp import CoreNLPClient
 from tqdm import tqdm
 import copy
-from lib.common import count_lines, detokenize
-from lib.query import Query
-
-
-client = None
-
-
-def annotate(sentence, lower=True):
-    global client
-    if client is None:
-        client = CoreNLPClient(default_annotators='ssplit,tokenize'.split(','))
-    words, gloss, after = [], [], []
-    for s in client.annotate(sentence):
-        for t in s:
-            words.append(t.word)
-            gloss.append(t.originalText)
-            after.append(t.after)
-    if lower:
-        words = [w.lower() for w in words]
-    return {
-        'gloss': gloss,
-        'words': words,
-        'after': after,
-        }
+from wikisql.lib.common import count_lines, detokenize
+from wikisql.lib.query import Query
+from nlp_helpers import annotate
 
 
 def annotate_example(example, table):

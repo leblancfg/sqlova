@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+defusedxml = "==0.6.0"
+matplotlib = "==3.1.0"
+protobuf = "==3.7.1"
+records = "==0.5.2"
+requests = "==2.22.0"
+tqdm = "==4.19.9"
+torch = "==0.4.1"
+torchvision = "==0.2.2"
+ujson = "==1.35"
+Babel = "==2.6.0"
+Flask = "==1.0.3"
+nltk = '*'
+
+[requires]
+python_version = "3.6"
