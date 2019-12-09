@@ -1,0 +1,53 @@
+<mat-toolbar color="primary" id="header">
+  <mat-toolbar-row>
+    <div> 
+      <a routerLink="/">        
+        <h4>&nbsp; Question 2 SQL</h4>
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-card class='flashcard'>
+  <form name="form" #f="ngForm" novalidate>
+      <mat-card-title>
+          Enter the question and upload a .csv file.
+      </mat-card-title>
+
+      <mat-card-content>
+
+          <div style='width: 80%'>
+              <mat-form-field style='width: 100%'>
+                  <mat-label>Enter question</mat-label>
+                  <textarea matInput [matTextareaAutosize]='true' name='question' required
+                      [(ngModel)]="question">
+                  </textarea>
+              </mat-form-field>
+          </div>
+          
+
+          <form name="form" #form='ngForm'>
+            <div>
+                <input #variable accept=".csv" required type='file' name="filepath" placeholder="Choose file"
+                    (change)="handleFileInput($event.target.files)">
+            </div>
+          </form>
+
+
+      </mat-card-content>
+
+      <mat-card-actions>
+          <button mat-raised-button color="accent" (click)='sendQuestion()' [disabled]="isUploading">
+              Process
+          </button>
+      </mat-card-actions>
+
+      <mat-card-content *ngIf='result'>
+        <h5>Result:</h5>
+        <pre>
+            {{result | json}}
+        </pre>
+      </mat-card-content>
+  </form>
+</mat-card>

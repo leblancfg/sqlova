@@ -1,0 +1,251 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+    height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: rgba(63,81,181, 0.05);
+  /*background-color: rgba(103,58,183, 0.05); TESTTESTOLD */
+}
+
+#header {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#header mat-toolbar-row {
+    justify-content: space-between;
+}
+
+#header mat-toolbar-row > div  {
+    display: flex;
+    align-items: center;
+}
+
+#header mat-toolbar-row > div:last-child {
+    justify-self: flex-end;
+}
+
+#header .logout-link {
+    cursor: pointer !important;
+}
+
+#main_menu {
+  padding-left: 40px; 
+}
+
+#main_menu a {
+  padding-right: 20px;
+}
+
+#main_menu .active-link {
+  font-weight: bold;
+  /* TESTTEST text-decoration: underline; */
+}
+
+mat-card {
+    max-width: 900px;
+    display: block;
+    margin: 15px auto;
+    padding: 20px !important;/* TESTTESTQU doesn't work */
+}
+
+/* TESTTEST */
+mat-card-title {
+  font-weight: bold !important; /* TESTTESTQU doesn't work */
+  margin: 0px 0px 15px !important;/* TESTTESTQU doesn't work */
+}
+
+/* TESTTESTUPDATE*/
+mat-card-subtitle {
+  font-weight: bold; /* TESTTESTQU works */
+  margin: 0px 0px 15px; /* TESTTESTQU doesn't work */
+}
+
+.mat-card-header-text {
+  margin-left: 0 !important;
+}
+
+mat-card-content {
+  line-height: 16px;
+}
+
+.col-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.col-layout mat-form-field {
+  width: 50%;
+}
+
+mat-card-actions {
+  text-align: right;
+}
+
+mat-card-actions button {
+  margin-right: 10px !important;
+}
+
+mat-card-header mat-progress-bar {
+  margin-bottom: 15px;
+  margin-left: -16px;
+}
+
+.flashcard .search-dictionary {
+  display: flex;
+  align-items: baseline;
+  flex-grow: 1;
+}
+
+/* TESTTESTQU */
+.flashcard .search-dictionary mat-form-field {
+  flex-grow: 1;
+}
+
+.flashcard .search-dictionary button {
+  flex-grow: 0;
+}
+
+.flashcard .search-dictionary button {
+  margin-left: 20px; 
+}
+
+.flashcard .search-dictionary mat-spinner {
+  display: inline-block;
+}
+
+.flashcard mat-card-content form > div {
+  margin-bottom: 20px
+}
+
+.flashcard mat-card-content mat-checkbox {
+  margin-right: 20px;
+}
+
+.flashcard .user_notes {
+  width: 80%;
+  /* padding-top: 20px; TESTTESTOLD */
+}
+
+.flashcard .user_notes mat-form-field {
+  width: 100%;
+}
+
+wordbank .flashcard mat-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+wordbank .wordbank-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+wordbank .wordbank-list-item a {
+  text-decoration: none;
+  color: inherit !important;
+}
+
+wordbank .wordbank-list-item .delete-flashcard {
+  display: flex;
+}
+
+wordbank .wordbank-list-item .delete-flashcard > * {
+  margin-right: 10px;
+}
+
+.flashcard-view {
+   margin-bottom: 20px !important;
+}
+
+flashcard-view mat-card-content > div {
+  margin-bottom: 20px !important;
+}
+
+.tasks-preparing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.green-snackbar {
+  background: teal;
+}
+
+.yellow-snackbar {
+  background: orange;
+}
+
+.yellow-snackbar span {
+  color: black;
+}
+
+.red-snackbar {
+  background: pink;
+}
+
+.mat-simple-snackbar span {
+  /** TESTTESTDO font-weight: bold; **/
+  text-align: right !important; /** TESTTESTQU doesn't work**/
+  /** TESTTESTQU where the color comes from **/
+}
+
+.practice-button .mat-card-actions {
+  text-align: center;
+}
+
+.practice-button .mat-card-actions a {
+  width: 50%;
+}
+
+.source-title mat-form-field {
+  width: 70%;
+  margin-right: 20px;
+}
+
+
+.search-box mat-form-field {
+  width: 70%;
+  margin-right: 20px;
+}
+
+.wordbank-list-item {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.delete-flashcard {
+  display: flex !important;
+}
+
+.source-selection {
+  display: flex;
+  flex-direction: column;
+}
+
+.source-selection mat-checkbox {
+  margin-bottom: 15px;
+}
+
+.source-selection mat-spinner {
+  margin: 0 auto;
+}
+
+.source-selection .snippet {
+  font-style: italic;
+}
+
+.source-selection  mat-checkbox label {
+  white-space: normal !important;
+}

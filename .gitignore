@@ -2,5 +2,6 @@ sqlova/**/*.pyc
 wikisql/**/*.pyc
 sqlnet/__pycache__
 bert/__pycache__
+frontend/node_modules
 .idea
 *.swp
