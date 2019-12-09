@@ -63,7 +63,7 @@ status = "Loading sqlova model, please wait"
 
 if not args.split:
     app = Flask(__name__)
-    @app.route('/', methods=['POST'])
+    @app.route('/api/process-question', methods=['POST'])
     def run():
         if handle_request:
             return handle_request(request)
