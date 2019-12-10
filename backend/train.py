@@ -14,8 +14,7 @@ import random as python_random
 
 # BERT
 
-import bert.tokenization as tokenization
-from bert.modeling import BertConfig, BertModel
+
 from sqlova.utils.utils_wikisql import *
 from sqlova.model.nl2sql.wikisql_models import *
 from sqlnet.dbengine import DBEngine
@@ -105,17 +104,11 @@ def construct_hyper_param(parser):
 
 def get_bert(BERT_PT_PATH, bert_type, do_lower_case, no_pretraining):
     # TODO transform bert_type (a few ) to bert_model_name
-    # do_lower_case зависит от типа модели, выьнаной в параметрах запуска. При переданном bert_type не нужен
 
     bert_model_name = 'bert-base-uncased'
     bert_config = BertConfig.from_pretrained(bert_model_name)
     tokenizer = BertTokenizer.from_pretrained(bert_model_name)
     model_bert =BertModel(bert_config)
-    if no_pretraining:
-        pass
-    else:
-        print("Load pre-trained parameters.")
-
     model_bert.to(device)
     return model_bert, tokenizer, bert_config
 
@@ -194,7 +187,6 @@ def train(train_loader, train_table, model, model_bert, opt, bert_config, tokeni
           st_pos=0, opt_bert=None, path_db=None, dset_name='train'):
     model.train()
     model_bert.train()
-    print('--train--')
     ave_loss = 0
     cnt = 0 # count the # of examples
     cnt_sc = 0 # count the # of correct predictions of select column
