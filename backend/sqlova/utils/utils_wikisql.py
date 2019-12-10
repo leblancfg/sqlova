@@ -810,7 +810,7 @@ def get_wemb_h(i_hds, l_hpu, l_hs, hS, num_hidden_layers, all_encoder_layer, num
 
 
 def get_wemb_bert(bert_config, model_bert, tokenizer, nlu_t, hds, max_seq_length, num_out_layers_n=1, num_out_layers_h=1):
-
+    print('--train bert--')
     # get contextual output of all tokens from bert
     all_encoder_layer, pooled_output, tokens, i_nlu, i_hds,\
     l_n, l_hpu, l_hs, \
