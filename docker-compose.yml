@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - 5050:5050
+
+  frontend:
+    restart: always
+    image: nginx
+    build: ./frontend
+    ports:
+      - 8080:8080
+    depends_on:
+      - backend
