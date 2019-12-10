@@ -1,0 +1,20 @@
+.git
+.dockerignore
+./idea
+./venv
+./vscode
+
+**.sqlite3
+./db.sqlite3
+
+
+# dependencies
+**/node_modules
+**/dist
+**/venv
+**/media
+**/dist
+**/.idea
+**/.vscode
+*Dockerfile*
+*docker-compose*
