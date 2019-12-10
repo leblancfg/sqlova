@@ -13,17 +13,17 @@ import random as python_random
 # import torchvision.datasets as dsets
 
 # BERT
+
 import bert.tokenization as tokenization
 from bert.modeling import BertConfig, BertModel
-
 from sqlova.utils.utils_wikisql import *
 from sqlova.model.nl2sql.wikisql_models import *
 from sqlnet.dbengine import DBEngine
-
+from transformers import BertTokenizer, BertModel, BertConfig
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def construct_hyper_param(parser):
-    parser.add_argument('--tepoch', default=200, type=int)
+    parser.add_argument('--tepoch', default=1, type=int)
     parser.add_argument("--bS", default=32, type=int,
                         help="Batch size")
     parser.add_argument("--accumulate_gradients", default=1, type=int,
@@ -104,28 +104,22 @@ def construct_hyper_param(parser):
 
 
 def get_bert(BERT_PT_PATH, bert_type, do_lower_case, no_pretraining):
+    # TODO transform bert_type (a few ) to bert_model_name
+    # do_lower_case зависит от типа модели, выьнаной в параметрах запуска. При переданном bert_type не нужен
 
-
-    bert_config_file = os.path.join(BERT_PT_PATH, f'bert_config_{bert_type}.json')
-    vocab_file = os.path.join(BERT_PT_PATH, f'vocab_{bert_type}.txt')
-    init_checkpoint = os.path.join(BERT_PT_PATH, f'pytorch_model_{bert_type}.bin')
-
-
-
-    bert_config = BertConfig.from_json_file(bert_config_file)
-    tokenizer = tokenization.FullTokenizer(
-        vocab_file=vocab_file, do_lower_case=do_lower_case)
-    bert_config.print_status()
-
-    model_bert = BertModel(bert_config)
+    bert_model_name = 'bert-base-uncased'
+    bert_config = BertConfig.from_pretrained(bert_model_name)
+    tokenizer = BertTokenizer.from_pretrained(bert_model_name)
+    model_bert =BertModel(bert_config)
     if no_pretraining:
         pass
     else:
-        model_bert.load_state_dict(torch.load(init_checkpoint, map_location='cpu'))
         print("Load pre-trained parameters.")
-    model_bert.to(device)
 
+    model_bert.to(device)
     return model_bert, tokenizer, bert_config
+
+
 
 def get_opt(model, model_bert, fine_tune):
     if fine_tune:
@@ -200,7 +194,7 @@ def train(train_loader, train_table, model, model_bert, opt, bert_config, tokeni
           st_pos=0, opt_bert=None, path_db=None, dset_name='train'):
     model.train()
     model_bert.train()
-
+    print('--train--')
     ave_loss = 0
     cnt = 0 # count the # of examples
     cnt_sc = 0 # count the # of correct predictions of select column
@@ -556,8 +550,8 @@ if __name__ == '__main__':
     args = construct_hyper_param(parser)
 
     ## 2. Paths
-    path_h = '/home/wonseok'
-    path_wikisql = os.path.join(path_h, 'data', 'wikisql_tok')
+    path_h = ''
+    path_wikisql = os.path.join(path_h, 'data')
     BERT_PT_PATH = path_wikisql
 
     path_save_for_evaluation = './'
