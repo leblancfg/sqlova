@@ -1,3 +1,15 @@
+# Implementation
+This repo forks [AlexDel's implentation](https://github.com/AlexDel/sqlova) and only fixes it such that a naive demo site can be run with minimal effort. I have not written any of the code, nor do I understand the implementation in any way other than cursory.
+
+## Installation
+This script has not been tested from scratch, but only retraces the steps I took to setup a vanilla Ubuntu 18.04 VM to run the code from docker-compose. It has been tested on a 4-CPU with no GPUs, and response time is not great, but decent. Your mileage may vary.
+
+    sudo setup.sh
+    
+Here follow the rest of the original notes by NAVER Corp.
+
+---
+
 # SQLova
 - SQLova is a neural semantic parser translating natural language utterance to SQL query. The name is originated from the name of our department:  **S**earch & **QLova** ([Search & Clova](https://clova.ai/ko/research/publications.html)).
 
