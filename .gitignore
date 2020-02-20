@@ -5,3 +5,4 @@ bert/__pycache__
 frontend/node_modules
 .idea
 *.swp
+backend/pretrained/*.pt
